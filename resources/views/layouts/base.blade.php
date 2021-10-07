@@ -25,10 +25,8 @@
 
 
 
-     @guest
          
     @yield('content')
-    @endguest
 
 
 

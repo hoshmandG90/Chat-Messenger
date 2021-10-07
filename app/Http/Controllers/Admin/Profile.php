@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Livewire\Component;
 use App\Models\User;
 use App\Models\Tweet;
-
+use App\Models\Follows;
 class Profile extends Component
 {
 
@@ -18,6 +18,13 @@ class Profile extends Component
 
 
 
+    public function store(User $user){
+       
+        Follows::create([
+            'user_id' => auth()->user()->id,
+            'following_user_id' => $user->id
+        ]);
+    }
 
     public function render()
     {

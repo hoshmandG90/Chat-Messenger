@@ -48,7 +48,7 @@
 
     
 	<div class="w-full max-w-xl border border-gray-300 rounded-2xl py-3 px-5">
-		<a href="{{route('profile',$tweet->user->id)}}" class="flex">
+		<a href="{{route('profile',$tweet->user)}}" class="flex">
 			<div class="mr-2">
 				<img class="w-12 h-12 rounded-full" src="{{$tweet->user->avatar}}"  /></div>
 				<div>
