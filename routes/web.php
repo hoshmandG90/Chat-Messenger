@@ -35,3 +35,6 @@ Route::get('/profile/{user:username}',App\Http\Controllers\Admin\Profile::class)
 
 
 Route::get('/EditProfile/{user:username}',App\Http\Controllers\Admin\EditProfile::class)->name('EditProfile');
+
+
+Route::get('/Explore',App\Http\Controllers\Explore::class)->name('Explore');

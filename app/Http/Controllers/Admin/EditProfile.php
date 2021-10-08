@@ -32,15 +32,21 @@ class EditProfile extends Component
     public function mount(User $user){
         $this->user = $user;
 
+        $this->UserName = $user->username;
+        $this->Email=$user->email;
+        $this->FullName=$user->name;
+        $this->EditBio = $user->bio;
+        $this->Avatar = $user->avatars;
+
     }
 
     public function SaveUser(User $user){
         $this->Validate([
-            'UserName'=>'required|string|max:20|unique:users|alpha_dash',
+            'UserName'=>'required|string|max:20|alpha_dash|unique:users,username,'.$this->user->id,
             'FullName' =>'required|min:6',
-            'Email'=>'required|email|unique:users',
-            'Password' =>'required|min:8|same:PasswordConfirmation',
-            'Avatars'=>'image|max:6000' ,
+            'Email'=>'required|email|unique:users,email,'.$this->user->id,
+            'Password' =>'required|min:8|max:255|same:PasswordConfirmation',
+            'Avatars'=>'image|max:6000,'.$this->user->id,
             'EditBio'=>'required|max:255|min:10|string'
         ]);
 
@@ -57,7 +63,7 @@ class EditProfile extends Component
             'created_at'=>Carbon::now(),
             'updated_at'=>Carbon::now()
         ]);
-        notyf()->livewire()->position("y","top")->addSuccess("successfully updated $user->name");
+        notyf()->livewire()->position("y","top")->addInfo("successfully updated $user->name");
 
     }
    

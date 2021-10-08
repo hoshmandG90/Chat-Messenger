@@ -108,14 +108,19 @@
                             </div>
                             @if ($Avatars)
 
-
                             Photo Preview:
                             <img src="{{$Avatars->temporaryUrl()}}" width="150px"
                                 class="img-responsive shadow-sm rounded-lg">
+
+                                @else
+                                Image Preview:
+                                <img src="{{auth()->user()->avatar}}" width="150px"
+                                class="img-responsive shadow-sm rounded-lg">
+
+
                             @endif
 
-                            @error('Avatars')<span class="text-xs mt-2 text-red-500 font-semibold">{{$message}}</span>
-                            @enderror
+                            @error('Avatars')<span class="text-xs mt-2 text-red-500 font-semibold">{{$message}}</span> @enderror
 
                         </div>
 

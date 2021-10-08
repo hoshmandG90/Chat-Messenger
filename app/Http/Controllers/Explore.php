@@ -8,7 +8,7 @@ use App\Models\Follows;
 use Illuminate\support\Carbon;
 use Livewire\WithPagination;
 
-class Friend extends Component
+class Explore extends Component
 {
 
 
@@ -58,6 +58,6 @@ class Friend extends Component
     {
         $friends =auth()->user()->follows()->pluck('id');
     $users=User::where('name','LIKE','%'.$this->search.'%')->latest()->paginate($this->limit);
-        return view('friend',compact('users'))->extends('layouts.master');
+        return view('explore',compact('users'))->extends('layouts.master');
     }
 }

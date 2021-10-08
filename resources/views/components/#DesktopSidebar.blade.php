@@ -19,10 +19,10 @@
             </a>
         </li>
         <li class="relative px-6 py-3">
-            <span class="absolute inset-y-0 left-0 w-1 "
+            <span class="absolute inset-y-0 left-0 w-1 {{request()->is('Explore') ? 'bg-purple-600 rounded-tr-lg rounded-br-lg' : ''}} "
                 aria-hidden="true"></span>
             <a class="inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100"
-                href="index.html">
+                href="{{route('Explore')}}">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
                   </svg>
