@@ -21,6 +21,8 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'username',
+        'bio',
         'email',
         'password',
         'avatars'
@@ -36,6 +38,7 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    
     /**
      * The attributes that should be cast.
      *
@@ -66,4 +69,16 @@ class User extends Authenticatable
         $friends =$this->follows->pluck('id');
         return Tweet::whereIn('user_id',$friends)->OrWhere('user_id',$this->id)->latest()->get();
     }
-}
+
+    public function following(User $user){
+        return $this->follows()->where('following_user_id',$user->id)->exists();
+    }
+
+    public function unfollow(User $user){
+        return $this->follows()->detach($user);
+    }
+
+   }
+
+
+

@@ -19,8 +19,10 @@ class Register extends Component
     public $PasswordConfirmation;
     public $Avatars;
 
+    public $UserName;
     public function register(){
      $this->Validate([
+         'UserName'=>'required|string|max:20|unique:users|alpha_dash',
          'FullName' =>'required|min:6',
          'Email'=>'required|email|unique:users',
          'Password' =>'required|min:8|same:PasswordConfirmation',
@@ -30,6 +32,7 @@ class Register extends Component
      $Files=\Str::random(20).'.'.$this->Avatars->getClientOriginalExtension();
      $this->Avatars->storeAs('Photos',$Files,'host');
      User::create([
+         'username'=>$this->UserName,
          'name'=>$this->FullName,
          'email'=>$this->Email,
          'password'=>Hash::make($this->Password),
@@ -38,6 +41,8 @@ class Register extends Component
 
 
      return redirect()->to(route('login'));
+     notyf()->livewire()->position("y","button")->addSuccess("successfully Registered");
+
 
     }
     public function render()

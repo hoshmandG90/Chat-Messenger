@@ -31,4 +31,7 @@ Route::get('/register',App\Http\Controllers\Admin\register::class)->name('regist
 Route::get('/friend',App\Http\Controllers\Friend::class)->name('friend');
 
 
-Route::get('/profile/{user}',App\Http\Controllers\Admin\Profile::class)->name('profile');
+Route::get('/profile/{user:username}',App\Http\Controllers\Admin\Profile::class)->name('profile');
+
+
+Route::get('/EditProfile/{user:username}',App\Http\Controllers\Admin\EditProfile::class)->name('EditProfile');

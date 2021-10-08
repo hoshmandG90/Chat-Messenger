@@ -8,9 +8,9 @@
     <!-- User card-->
     <div>
         <div class="w-full bg-cover bg-no-repeat bg-center object-cover"
-            style="height: 200px; background-image: url(https://pbs.twimg.com/profile_banners/2161323234/1585151401/600x200);">
+            style="height: 400px; background-image: url(https://images.pexels.com/photos/4039921/pexels-photo-4039921.jpeg?cs=srgb&dl=pexels-alex-azabache-4039921.jpg&fm=jpg);">
             <img class="opacity-0 w-full h-full"
-                src="https://pbs.twimg.com/profile_banners/2161323234/1585151401/600x200" alt="">
+                src="https://images.pexels.com/photos/4039921/pexels-photo-4039921.jpeg?cs=srgb&dl=pexels-alex-azabache-4039921.jpg&fm=jpg" alt="">
         </div>
         <div class="p-4">
             <div class="relative flex w-full">
@@ -27,16 +27,26 @@
                     </div>
                 </div>
                 <!-- Follow Button -->
+                    
                 <div class="flex items-center space-x-2 text-right">
+                    @unless (auth()->user()->is($user))
+
                     <span wire:click.prevent="store('{{$user->id}}')"
                         class=" px-4 py-2 shadow border border-gray-200 rounded-full dark:text-gray-200 text-gray-600 hover:dark:text-gray-300 cursor-pointer">
-                        Follow Me
+                         {{auth()->user()->following($user) ? ' Following':'Follow Me'}}
                     </span>
-                    <button
+                    @endunless
+
+                    @if (auth()->user()->is($user))
+                        
+                 
+                    <a href="{{route('EditProfile',$user->username)}}"
                         class="flex justify-center  max-h-max whitespace-nowrap focus:outline-none  focus:ring  rounded max-w-max border bg-transparent border-blue-500 text-blue-500 hover:border-blue-800 hover:border-blue-800 flex items-center hover:shadow-lg font-bold py-2 px-4 rounded-full mr-0 ml-auto">
                         Edit Profile
-                    </button>
+                    </a>
+                    @endif
                 </div>
+
             </div>
 
             <!-- Profile info -->
@@ -48,8 +58,7 @@
                 </div>
                 <!-- Description and others -->
                 <div class="mt-3">
-                    <p class=" leading-tight mb-2">Software Engineer / Designer / Entrepreneur <br>Visit my website to
-                        test a working <b>Twitter Clone.</b> </p>
+                    <p class=" leading-tight mb-2">{{$user->bio}}.</p>
                     <div class="text-gray-600 flex">
                         <span class="flex mr-2"><svg viewBox="0 0 24 24" class="h-5 w-5 paint-icon">
                                 <g>
@@ -60,23 +69,9 @@
                                         d="M7.27 22.054c-1.61 0-3.197-.735-4.225-2.125-.832-1.127-1.176-2.51-.968-3.894s.943-2.605 2.07-3.438l1.478-1.094c.334-.245.805-.175 1.05.158s.177.804-.157 1.05l-1.48 1.095c-.803.593-1.326 1.464-1.475 2.45-.148.99.097 1.975.69 2.778 1.225 1.657 3.57 2.01 5.23.785l3.528-2.608c1.658-1.225 2.01-3.57.785-5.23-.498-.674-1.187-1.15-1.992-1.376-.4-.113-.633-.527-.52-.927.112-.4.528-.63.926-.522 1.13.318 2.096.986 2.794 1.932 1.717 2.324 1.224 5.612-1.1 7.33l-3.53 2.608c-.933.693-2.023 1.026-3.105 1.026z">
                                     </path>
                                 </g>
-                            </svg> <a href="https://ricardoribeirodev.com/personal/" target="#"
-                                class="leading-5 ml-1 text-blue-400">www.RicardoRibeiroDEV.com</a></span>
-                        <span class="flex mr-2"><svg viewBox="0 0 24 24" class="h-5 w-5 paint-icon">
-                                <g>
-                                    <path
-                                        d="M19.708 2H4.292C3.028 2 2 3.028 2 4.292v15.416C2 20.972 3.028 22 4.292 22h15.416C20.972 22 22 20.972 22 19.708V4.292C22 3.028 20.972 2 19.708 2zm.792 17.708c0 .437-.355.792-.792.792H4.292c-.437 0-.792-.355-.792-.792V6.418c0-.437.354-.79.79-.792h15.42c.436 0 .79.355.79.79V19.71z">
-                                    </path>
-                                    <circle cx="7.032" cy="8.75" r="1.285"></circle>
-                                    <circle cx="7.032" cy="13.156" r="1.285"></circle>
-                                    <circle cx="16.968" cy="8.75" r="1.285"></circle>
-                                    <circle cx="16.968" cy="13.156" r="1.285"></circle>
-                                    <circle cx="12" cy="8.75" r="1.285"></circle>
-                                    <circle cx="12" cy="13.156" r="1.285"></circle>
-                                    <circle cx="7.032" cy="17.486" r="1.285"></circle>
-                                    <circle cx="12" cy="17.486" r="1.285"></circle>
-                                </g>
-                            </svg> <span class="leading-5 ml-1">Joined {{$user->created_at->format('M , d Y')}}</span></span>
+                            </svg> </span>
+                        <span class="flex mr-2">
+                             <span class="leading-5 ml-1">Joined {{$user->created_at->format('M , d Y')}}</span></span>
                     </div>
                 </div>
                 <div class="pt-3 flex justify-start items-start w-full divide-x divide-gray-800 divide-solid">

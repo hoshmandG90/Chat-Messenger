@@ -13,13 +13,12 @@ class Index extends Component
     public $body;
     public function tweets(){
     
-        $FileUpload=\Str::random(10).'.'.$this->photos->getClientOriginalExtension();
          
        $this->Validate([
             'photos' =>'image|max:6144',
             'body'=>'required|max:255'
         ]);
-
+        $FileUpload=\Str::random(10).'.'.$this->photos->getClientOriginalExtension();
         $this->photos->storeAs('Tweets',$FileUpload,'host');
   
          Tweet::create([

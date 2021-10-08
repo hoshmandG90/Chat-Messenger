@@ -18,10 +18,18 @@
 
                 <form wire:submit.prevent="register" class="mt-6">
                     <div>
+                        <label class="block text-gray-700">username</label>
+                        <input  type="text" wire:model.defer="UserName" placeholder="Enter your username"
+                            class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"
+                            autofocus  >
+                             @error('UserName')<span class="text-xs mt-1 text-red-500 font-semibold">{{$message}}</span>  @enderror
+                    </div>
+
+                    <div>
                         <label class="block text-gray-700">Full Name</label>
                         <input  type="text" wire:model.defer="FullName" placeholder="Enter your name"
                             class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"
-                            autofocus  >
+                              >
                              @error('FullName')<span class="text-xs mt-1 text-red-500 font-semibold">{{$message}}</span>  @enderror
                     </div>
 
