@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Tweets;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use App\Models\Tweet;
+use Illuminate\Contracts\Auth\Authenticatable;
+use App\Models\Likes;
+use App\Models\User;
 class Index extends Component
 {
     use WithFileUploads;
@@ -32,10 +35,37 @@ class Index extends Component
 
 
     }
+
+
+   
+    public function store(Tweet $tweet){
+   
+
+       $tweet->like(auth()->user());
+        notyf()->livewire()->position("y","top")->addInfo('you liked this tweet');
+
+
+
+
+    }
+
+
+    public function destroy(Tweet $tweet){
+   
+
+        $tweet->dislike(auth()->user());
+        notyf()->livewire()->position("y","top")->addInfo('you Disliked this tweet');
+
+
+    }
+
+  
     public function render()
     {
 
         $tweets=auth()->user()->timeline();
-        return view('tweets.index',compact('tweets'))->extends('layouts.master');
+        $Liked=Likes::where('liked',true)->count();
+        $DisLiked=Likes::where('liked',false)->count();
+        return view('tweets.index',compact('tweets','Liked','DisLiked'))->extends('layouts.master');
     }
 }

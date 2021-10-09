@@ -9,7 +9,7 @@
     <div>
         <div class="w-full bg-cover bg-no-repeat bg-center object-cover"
             style="height: 400px; background-image: url(https://images.pexels.com/photos/4039921/pexels-photo-4039921.jpeg?cs=srgb&dl=pexels-alex-azabache-4039921.jpg&fm=jpg);">
-            <img class="opacity-0 w-full h-full"
+            <img class="opacity-0 w-full rounded-full h-full"
                 src="https://images.pexels.com/photos/4039921/pexels-photo-4039921.jpeg?cs=srgb&dl=pexels-alex-azabache-4039921.jpg&fm=jpg" alt="">
         </div>
         <div class="p-4">
@@ -75,7 +75,7 @@
                     </div>
                 </div>
                 <div class="pt-3 flex justify-start items-start w-full divide-x divide-gray-800 divide-solid">
-                    <div class="text-center pr-3"><span class="font-bold ">520</span><span class="text-gray-600">
+                    <div class="text-center pr-3"><span class="font-bold ">{{$follow_count}}</span><span class="text-gray-600">
                             Following</span></div>
                     <div class="text-center px-3"><span class="font-bold ">23,4m </span><span class="text-gray-600">
                             Followers</span></div>

@@ -46,6 +46,7 @@ class Friend extends Component
 
         ]);      
           notyf()->livewire()->position("y","top")->addSuccess("Requested To $user->name");
+          return back();
 
 
 
@@ -56,8 +57,7 @@ class Friend extends Component
 
     public function render()
     {
-        $friends =auth()->user()->follows()->pluck('id');
-    $users=User::where('name','LIKE','%'.$this->search.'%')->latest()->paginate($this->limit);
-        return view('friend',compact('users'))->extends('layouts.master');
+           $users=auth()->user()->follows()->where('name','LIKE','%'.$this->search.'%')->latest()->paginate($this->limit);
+           return view('friend',compact('users'))->extends('layouts.master');
     }
 }

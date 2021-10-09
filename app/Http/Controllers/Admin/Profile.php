@@ -43,6 +43,8 @@ class Profile extends Component
     {
 
         $tweets=Tweet::where('user_id',$this->user->id)->latest()->get();
-        return view('admin.profile',compact('tweets'))->extends('layouts.master');
+
+        $follow_count=Follows::where('user_id',auth()->user()->id)->count();
+        return view('admin.profile',compact('tweets','follow_count'))->extends('layouts.master');
     }
 }

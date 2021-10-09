@@ -1,6 +1,6 @@
 <div>
     <!--people suggetion to follow section-->
-    <div class=" rounded-lg dark:text-gray-800  overflow-y-auto bg-white dark:bg-gray-800   shadow-lg m-4">
+    <div class=" rounded-lg    shadow-lg ">
         <div class="flex justify-between">
             <div class="flex-1 m-2">
                 <h2 class="px-4 py-2 text-xl w-48 font-semibold ">Following </h2>
@@ -43,7 +43,7 @@
                     <div>
 
                      @if ($user->avatars == null)
-                     <img class="block h-10 w-10 object-cover rounded-full ml-2 mt-2 " src="{{asset('assets/img/user.svg')}}"
+                     <img class=" inline-block h-10 w-10 object-cover rounded-full ml-2 mt-2 " src="https://i.pravatar.cc/100?u={{$user->email}}"
                      alt="">
                      @else
                      <img class="inline-block h-10 w-10 object-cover rounded-full ml-2 mt-2 " src="{{$user->avatar}}">
@@ -65,12 +65,12 @@
                 </div>
 
             </div>
-            <div wire:click.prevent="store('{{$user->id}}')" class="flex-1 px-4 py-2 m-2">
+            <div wire:click.prevent="store('{{$user->id}}')" class="flex-1 px-2 py-2 m-2">
                 <a href="" class=" float-right">
-                    <button
-                        class="bg-transparent bg-gray-800  font-semibold text-white py-2 px-4 border border-white border-transparent rounded-lg">
+                    <a
+                        class="bg-transparent bg-gray-800  font-semibold text-xs text-white py-2 px-4 border border-white border-transparent rounded-lg">
                         {{auth()->user()->following($user) ? 'Following':'Follow Me'}}
-                    </button>
+                    </a>
                 </a>
 
             </div>
