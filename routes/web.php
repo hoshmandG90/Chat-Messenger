@@ -40,4 +40,9 @@ Route::get('/EditProfile/{user:username}',App\Http\Controllers\Admin\EditProfile
 Route::get('/Explore',App\Http\Controllers\Explore::class)->name('Explore');
 
 
-Route::get('/Message',App\Http\Controllers\Message::class)->name('Message');
+Route::get('/Message/{user:username}',App\Http\Controllers\Message::class)->name('Message');
+
+
+
+Route::get('/Replay/{user:username}',App\Http\Controllers\ReplayMessage::class)->name('Replay');
+

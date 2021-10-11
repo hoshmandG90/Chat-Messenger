@@ -8,7 +8,7 @@
             </div>
                     <!-- Search input -->
         <div class="px-2 py-4">
-            <div class="relative w-full max-w-xl mr-6 focus-within:text-purple-500">
+            <div class="relative w-full  mr-6 focus-within:text-purple-500">
                 <div class="absolute inset-y-0 flex items-center pl-2">
                     <svg class="w-4 h-4" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd"
@@ -68,6 +68,12 @@
                         class="bg-transparent bg-gray-800 truncate text-xs font-semibold text-white py-2 px-4 border border-white border-transparent rounded-lg">
                         {{auth()->user()->following($user) ? 'Following':'Follow Me'}}
                     </a>
+                </a>
+
+            </div>
+            <div  class=" px-4 py-2 m-2">
+                <a href="{{route('Replay',$user->username)}}" class=" float-rig bg-transparent bg-gray-800 truncate text-xs font-semibold text-white py-2 px-4 border border-white border-transparent rounded-lg">
+                  Message   
                 </a>
 
             </div>

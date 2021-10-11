@@ -18,11 +18,23 @@
                 <div class="flex flex-1">
                     <div style="margin-top: -6rem;">
                         <div style="height:9rem; width:9rem;" class="md rounded-full relative avatar">
-                            <img style="height:9rem; width:9rem;"
+                            @if ($user->avatars !=null)
+                               <img style="height:9rem; width:9rem;"
                                 class="md rounded-full relative object-cover border-4 border-gray-900"
                                 src="{{$user->avatar}}"
                                 alt="">
-                            <div class="absolute"></div>
+                            <div class="absolute"></div>            
+                            @endif
+                            @if ($user->avatars==null)
+                            <img style="height:9rem; width:9rem;"
+                            class="md rounded-full relative object-cover border-4 border-gray-900"
+                            src="https://i.pravatar.cc/250?u={{$user->email}}"
+                            alt="">
+                            @endif
+                         
+                           <div class="absolute"></div>
+                                
+                            
                         </div>
                     </div>
                 </div>
@@ -32,8 +44,15 @@
                     @unless (auth()->user()->is($user))
 
                     <span wire:click.prevent="store('{{$user->id}}')"
-                        class=" px-4 py-2 shadow border border-gray-200 rounded-full dark:text-gray-200 text-gray-600 hover:dark:text-gray-300 cursor-pointer">
+                        class=" px-8 py-2 shadow border truncate text-xs border-gray-200 rounded-full dark:text-gray-200 text-gray-600 hover:dark:text-gray-300 cursor-pointer">
                          {{auth()->user()->following($user) ? ' Following':'Follow Me'}}
+                    </span>
+
+                    <span>
+                        <a href="{{route('Message',$user->username)}}" 
+                            class=" px-4 py-2 shadow border border-gray-200 rounded-full dark:text-gray-200 text-gray-600 hover:dark:text-gray-300 cursor-pointer">
+                              Message
+                        </a>
                     </span>
                     @endunless
 

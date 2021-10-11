@@ -53,7 +53,7 @@
 
                       
                     </div>
-                    <div class="ml-3 mt-3">
+                    <a href="{{route('profile',$user->username)}}" class="ml-3 mt-3">
                         <p class="text-base leading-6 font-medium truncate capitalize">
                             {{$user->name}}
                         </p>
@@ -61,7 +61,7 @@
                             class="text-sm leading-5 font-medium text-gray-600 group-hover:text-gray-300 transition ease-in-out duration-150">
                             {{$user->created_at->format('M ,d Y')}}
                         </p>
-                    </div>
+                    </a>
                 </div>
 
             </div>

@@ -41,10 +41,10 @@
             </a>
         </li>
         <li class="relative px-6 py-3">
-            <span class="absolute inset-y-0 left-0 w-1 {{request()->is('Message') ? 'bg-purple-600 rounded-tr-lg rounded-br-lg' : ''}} "
+            <span class="absolute inset-y-0 left-0 w-1  "
                 aria-hidden="true"></span>
             <a class="inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100"
-                href="{{route('Message')}}">
+                href="">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clip-rule="evenodd" />
                   </svg>
